@@ -19,20 +19,25 @@ app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "notes.html"));
 });
 
-//Get /api/notes from db.json
 app.get("/api/notes", function(req, res) {
-    console.log(data);
-    return res.json(data);
+    console.log(activeNote);
+    return res.json(activeNote);
   });
 
 
-
 //Post /api/notes
-//receive JSON obj 
+app.post("/api/notes", function(req,res) {
+    console.log("notes");
+    console.log(req.body);
+
+
+
 //fs.writeFile(destination, db, function(err) {}
 
 
-//return res.status(200).end();
+//return 
+res.status(200).end();
+
 //Delete /api/notes/:id
 
 
