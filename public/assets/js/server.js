@@ -10,8 +10,22 @@ app.use(express.json());
 
 var notes = [];
 
+// Basic route that sends the user first to the AJAX Page
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/notes", function (req, res) {
+    res.sendFile(path.join(__dirname, "notes.html"));
+});
+
 //Get /api/notes from db.json
-//return res.json(data);
+app.get("/api/notes", function(req, res) {
+    console.log(data);
+    return res.json(data);
+  });
+
+
 
 //Post /api/notes
 //receive JSON obj 
