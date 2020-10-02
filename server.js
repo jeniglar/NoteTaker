@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 
 const app = express();
-const PORT = 8000; 
+const PORT = process.env.PORT || 8000; 
 const db = require("./db/db.json");
 
 const fs = require("fs");
@@ -26,12 +26,13 @@ function readFromFile () {
 
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
 
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/api/notes", function(req, res) {
